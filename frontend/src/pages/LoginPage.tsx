@@ -1,7 +1,7 @@
 import { useState } from "react";
 import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
-import "../styles/LoginPage.css";
+import "../styles/loginPage.css";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
