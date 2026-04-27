@@ -1,0 +1,17 @@
+:root {
+  --bg: #0a0a0a;
+  --card: #141414;
+  --card-border: #222;
+  --text: #fff;
+  --muted: #888;
+  --dim: #444;
+  --dot-on: #fff;
+  --dot-off: #1a1a1a;
+  --dot-off-border: #2a2a2a;
+  --accent-ring: #fff;
+  --error-bg: #2a1414;
+  --error-text: #ff8080;
+  --radius: 12px;
+  --radius-sm: 6px;
+  --gap: 10px;
+}
