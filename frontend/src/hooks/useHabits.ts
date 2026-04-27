@@ -7,6 +7,8 @@ export function useHabits() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const inFlight = useRef<Set<string>>(new Set());
+  const habitsRef = useRef<Habit[]>([]);
+  habitsRef.current = habits;
 
   const showError = useCallback((msg: string) => {
     setError(msg);
@@ -59,23 +61,22 @@ export function useHabits() {
   const toggleDay = useCallback(async (id: number, date: string) => {
     const key = `${id}|${date}`;
     if (inFlight.current.has(key)) return;
-    inFlight.current.add(key);
 
-    let prevSnapshot: Habit[] = [];
-    let willBeDone = false;
-    setHabits(prev => {
-      prevSnapshot = prev;
-      return prev.map(h => {
-        if (h.id !== id) return h;
-        const wasDone = h.days.find(d => d.date === date)?.done ?? false;
-        willBeDone = !wasDone;
-        const days = h.days.map(d =>
-          d.date === date ? { ...d, done: willBeDone } : d
-        );
-        const totalDelta = willBeDone ? 1 : -1;
-        return { ...h, days, totalCount: h.totalCount + totalDelta };
-      });
-    });
+    const habit = habitsRef.current.find(h => h.id === id);
+    if (!habit) return;
+    const wasDone = habit.days.find(d => d.date === date)?.done ?? false;
+    const willBeDone = !wasDone;
+
+    inFlight.current.add(key);
+    const prevSnapshot = habitsRef.current;
+
+    setHabits(prev => prev.map(h => {
+      if (h.id !== id) return h;
+      const days = h.days.map(d =>
+        d.date === date ? { ...d, done: willBeDone } : d
+      );
+      return { ...h, days, totalCount: h.totalCount + (willBeDone ? 1 : -1) };
+    }));
 
     try {
       const updated = willBeDone
