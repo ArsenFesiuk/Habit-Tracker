@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,5 +14,6 @@ import lombok.Setter;
 public class HabitDTO {
     private Long id;
     private String name;
-    private int count;
+    private int totalCount;
+    private List<HabitDayDTO> days;
 }

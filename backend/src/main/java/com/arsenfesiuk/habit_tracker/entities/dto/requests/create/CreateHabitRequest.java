@@ -9,6 +9,4 @@ import lombok.Setter;
 public class CreateHabitRequest {
     @Nullable
     private String name;
-    @Nullable
-    private int count;
 }

@@ -9,11 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class HabitFactory {
+
     public Habit create(CreateHabitRequest request, User user) {
         Habit habit = new Habit();
         habit.setName(request.getName());
-        habit.setCount(request.getCount());
         habit.setUser(user);
         return habit;
     }
 }
+
