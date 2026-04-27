@@ -1,0 +1,151 @@
+.home-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 18px;
+}
+
+.muted { color: var(--muted); }
+
+.banner-error {
+  background: var(--error-bg);
+  color: var(--error-text);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.habits-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  margin-bottom: 24px;
+}
+
+.habit-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+.habit-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.habit-name {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 15px;
+  padding: 0;
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.habit-name:hover { text-decoration: underline; }
+
+.habit-name-editor {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 4px 8px;
+  font-size: 15px;
+  outline: none;
+}
+.habit-name-editor:focus { border-color: var(--text); }
+
+.habit-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.habit-total {
+  color: var(--muted);
+  font-size: 13px;
+  margin-right: 4px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 14px;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+}
+.icon-btn:hover { color: var(--text); background: var(--card-border); }
+
+.habit-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.habit-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--dot-off);
+  border: 1px solid var(--dot-off-border);
+  padding: 0;
+}
+.habit-dot.done {
+  background: var(--dot-on);
+  border-color: var(--dot-on);
+}
+.habit-dot.today {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 1px;
+}
+
+.add-habit {
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid var(--card-border);
+  padding-top: 16px;
+}
+
+.add-habit input {
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+}
+.add-habit input:focus { border-color: var(--text); }
+
+.add-habit button {
+  background: var(--text);
+  color: #000;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0 16px;
+  font-weight: 600;
+}
