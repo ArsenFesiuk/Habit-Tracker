@@ -1,0 +1,85 @@
+.habit-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.habit-page .container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 14px;
+  padding: 0;
+  margin-bottom: 12px;
+}
+.back-btn:hover { color: var(--text); }
+
+.habit-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.month-calendar {
+  margin-top: 24px;
+}
+
+.month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.month-title {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.weekday-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.day-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  font-size: 13px;
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--muted);
+}
+
+.day.empty { color: transparent; }
+
+.day.future { color: var(--dim); }
+
+.day.done {
+  background: var(--dot-on);
+  color: #000;
+  font-weight: 600;
+}
+
+.day.today {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 1px;
+}
