@@ -8,6 +8,7 @@ import com.arsenfesiuk.habit_tracker.entities.dto.StatsDTO;
 import com.arsenfesiuk.habit_tracker.entities.dto.WeeklyTrendPointDTO;
 import com.arsenfesiuk.habit_tracker.repositories.HabitEntryRepository;
 import com.arsenfesiuk.habit_tracker.repositories.HabitRepository;
+import com.arsenfesiuk.habit_tracker.exceptions.BadRequestException;
 import com.arsenfesiuk.habit_tracker.services.StatsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -37,6 +38,9 @@ public class StatsServiceJPA implements StatsService {
     @Override
     public StatsDTO getStats(LocalDate from, LocalDate to) {
         User user = getCurrentUser();
+        if (from.isAfter(to)) {
+            throw new BadRequestException("`from` must be on or before `to`");
+        }
         List<Habit> habits = habitRepository.findAllByUserId(user.getId());
 
         if (habits.isEmpty()) {
@@ -81,7 +85,7 @@ public class StatsServiceJPA implements StatsService {
                 .map(HabitEntry::getDate)
                 .collect(Collectors.toSet());
         int streak = 0;
-        LocalDate cursor = LocalDate.now().minusDays(1);
+        LocalDate cursor = LocalDate.now();
         while (doneDates.contains(cursor)) {
             streak++;
             cursor = cursor.minusDays(1);
