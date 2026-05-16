@@ -1,3 +1,7 @@
 .superpowers/
 .idea/
 docs/
+.claude/
+backend/example_big.in
+backend/test.in
+backend/src/main/java/Synonyms.java
