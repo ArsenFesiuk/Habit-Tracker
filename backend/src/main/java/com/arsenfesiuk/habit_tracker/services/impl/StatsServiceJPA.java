@@ -53,6 +53,7 @@ public class StatsServiceJPA implements StatsService {
         int totalCompletions = (int) doneCount;
         int activeHabits = habits.size();
 
+        // Uses all-time entries (lazy-loaded per habit) so streaks starting before `from` are counted correctly.
         int bestCurrentStreak = habits.stream()
                 .mapToInt(h -> computeCurrentStreak(h.getEntries()))
                 .max()
