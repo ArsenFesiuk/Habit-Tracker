@@ -16,4 +16,10 @@ public interface HabitEntryRepository extends JpaRepository<HabitEntry, Long> {
             LocalDate start,
             LocalDate end
     );
+
+    List<HabitEntry> findByHabitInAndDateBetween(
+            List<Habit> habits,
+            LocalDate from,
+            LocalDate to
+    );
 }
